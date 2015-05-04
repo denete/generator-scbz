@@ -1,0 +1,19 @@
+.idea
+.sass-cache
+config.codekit
+vssver2.scc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Ignore the node_modules folder
+node_modules
