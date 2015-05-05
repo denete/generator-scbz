@@ -1,4 +1,4 @@
-# generator-scbz [![Build Status](https://secure.travis-ci.org/denete/generator-scbz.png?branch=master)](https://travis-ci.org/denete/generator-scbz)
+# generator-scbz
 
 > [Yeoman](http://yeoman.io) generator
 
