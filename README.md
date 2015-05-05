@@ -5,7 +5,7 @@
 
 ## Features
 
-Please see our [gulpfile.js](app/templates/gulpfile.js) for up to date information on what is supported
+Please see the [gulpfile.js](app/templates/gulpfile.js) for information on what is supported
 
 * CSS pre-processing
 * CSS concatenation and minification
@@ -16,9 +16,11 @@ Please see our [gulpfile.js](app/templates/gulpfile.js) for up to date informati
 
 - Install dependencies: `npm install --global yo bower`
 - Clone this repository
-- Link and install the generator: `cd generator-scbz`, `npm link`, `cd ..`, `npm install ./generator-scbz/`
+- Link and install the generator:
+    `$ cd generator-scbz && npm link && cd .. && npm install ./generator-scbz/`
 - Create a directory for the new site and `cd` into that directory
 - Run `yo scbz` to scaffold the site
+- Edit the generated `gulpfile.js` to uncomment the JS and CSS for any libs you added
 - Run `gulp` to build the site
 
 ## Options
