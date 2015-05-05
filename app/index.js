@@ -55,15 +55,18 @@ var ScbzGenerator = yeoman.generators.Base.extend({
                 return props.gameIsPassthru;
             }
         },{
-            type: 'confirm',
-            name: 'useBootstrap',
-            message: 'Do you wish to use Bootstrap?',
-            default: false
-        },{
             type: 'checkbox',
             name: 'extraLibs',
-            message: 'What more would you like?',
+            message: 'What libraries would you like to install?',
             choices: [{
+                name: 'jQuery',
+                value: 'useJquery',
+                checked: false
+            },{
+                name: 'Bootstrap',
+                value: 'useBootstrap',
+                checked: false
+            },{
                 name: 'Jasny Bootstrap',
                 value: 'useJasnyBootstrap',
                 checked: false
@@ -86,13 +89,14 @@ var ScbzGenerator = yeoman.generators.Base.extend({
             this.googleAnalyticsCode = props.googleAnalyticsCode;
             this.gameIsPassthru = props.gameIsPassthru;
             this.passthruUrl = props.passthruUrl;
-            this.useBootstrap = props.useBootstrap;
 
             var extraLibs = props.extraLibs
             var checkLib = function (lib) {
                 return extraLibs.indexOf(lib) !== -1;
             };
 
+            this.useJquery = checkLib('useJquery');
+            this.useBootstrap = checkLib('useBootstrap');
             this.useJasnyBootstrap = checkLib('useJasnyBootstrap');
             this.useParsley = checkLib('useParsley');
             this.useFancybox = checkLib('useFancybox');
@@ -138,6 +142,10 @@ var ScbzGenerator = yeoman.generators.Base.extend({
                 private: true,
                 dependencies: {}
             };
+
+            if(this.useJquery) {
+                bower.dependencies.jquery = '~2.1.4';
+            }
 
             if(this.useBootstrap) {
                 bower.dependencies.bootstrap = '~3.3.4';
