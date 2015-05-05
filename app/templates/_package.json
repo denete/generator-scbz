@@ -1,7 +1,7 @@
 {
-  "name": "scbz-boilerplate-yo",
+  "name": "scbz-boilerplate-generator",
   "version": "0.0.1",
-  "description": "scbz boilerplate yeoman generated",
+  "description": "Yeoman generator for setting up new SCBZ sites.",
   "main": "index.js",
   "scripts": {
     "start": "gulp serve",
@@ -11,7 +11,7 @@
     "type": "",
     "url": ""
   },
-  "author": "",
+  "author": "SGI Digital Content Studio",
   "license": "SGI",
   "devDependencies": {
     "del": "^1.1.1",
@@ -23,7 +23,9 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^1.3.3",
     "gulp-uglify": "^1.1.0",
-    "gulp-util": "^3.0.4"
+    "gulp-util": "^3.0.4",
+    "gulp-cache": "^0.2.8",
+    "gulp-imagemin": "^2.2.1"
   },
   "optionalDependencies": {
     "browser-sync": "^2.6.4",

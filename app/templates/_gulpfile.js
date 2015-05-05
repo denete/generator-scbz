@@ -5,6 +5,8 @@ var gutil = require('gulp-util');
 var cssmin = require('gulp-minify-css');
 var less = require('gulp-less');
 var sass = require('gulp-sass');
+var cache = require('gulp-cache');
+var imagemin = require('gulp-imagemin');
 var fs = require('fs');
 var del = require('del');
 
@@ -57,6 +59,19 @@ gulp.task('clean:git', function () {
     ], function (err, deletedFiles) {
         console.log('Files deleted:\n' + deletedFiles.join('\n'));
     });
+});
+
+// the images task runs site images through imagemin
+gulp.task('images', function () {
+    return gulp.src('./assets/images/**/*')
+        .pipe(cache(imagemin({
+            progressive: true,
+            interlaced: true,
+            // don't remove IDs from SVGs, they are often used
+            // as hooks for embedding and styling
+            svgoPlugins: [{cleanupIDs: false}]
+        })))
+        .pipe(gulp.dest('./assets/dist/images'));
 });
 
 // the jsmin task concatenates all files found in jsList and "uglifies" them
@@ -158,4 +173,4 @@ gulp.task('serve', ['jsmin', 'cssmin'], function() {
 });
 
 
-gulp.task('default', ['jsmin', 'cssmin']);
+gulp.task('default', ['jsmin', 'cssmin', 'images']);

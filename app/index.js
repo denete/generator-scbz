@@ -3,8 +3,23 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var chalk = require('chalk');
 
 var ScbzGenerator = yeoman.generators.Base.extend({
+    constructor: function () {
+        yeoman.generators.Base.apply(this, arguments);
+
+        this.option('skip-install', {
+            desc: 'Skips the installation of dependencies',
+            type: Boolean
+        });
+
+        this.option('skip-install-message', {
+            desc: 'Skips the message after the installation of dependencies',
+            type: Boolean
+        });
+    },
+
     initializing: function () {
         this.pkg = require('../package.json');
     },
@@ -13,7 +28,7 @@ var ScbzGenerator = yeoman.generators.Base.extend({
         var done = this.async();
 
         this.log(yosay(
-            'Welcome to the SCBZ site generator!'
+            'Welcome to the SCBZ Site Generator!'
         ));
 
         var prompts = [{
@@ -40,7 +55,7 @@ var ScbzGenerator = yeoman.generators.Base.extend({
             type: 'input',
             name: 'googleAnalyticsCode',
             message: 'Google Analytics Code?',
-            default: 'GA-XXX'
+            default: 'UA-XXXXX-X'
         },{
             type: 'confirm',
             name: 'gameIsPassthru',
@@ -57,7 +72,7 @@ var ScbzGenerator = yeoman.generators.Base.extend({
         },{
             type: 'checkbox',
             name: 'extraLibs',
-            message: 'What libraries would you like to install?',
+            message: 'What extra libraries would you like to install?',
             choices: [{
                 name: 'jQuery',
                 value: 'useJquery',
@@ -167,8 +182,20 @@ var ScbzGenerator = yeoman.generators.Base.extend({
         }
     },
 
+    install: function () {
+        var howToInstall = '\nBe sure to manually run ' + chalk.yellow.bold('npm install & bower install') + '.';
+
+        if (this.options['skip-install']) {
+            this.log(howToInstall);
+            return;
+        }
+    },
+
     end: function () {
-        this.installDependencies();
+        this.installDependencies({
+            skipMessage: this.options['skip-install-message'],
+            skipInstall: this.options['skip-install']
+        });
     }
 });
 
