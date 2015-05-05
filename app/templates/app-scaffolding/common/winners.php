@@ -1,24 +1,16 @@
-
-<table id="table-panelled" class="table table-stripped table-bordered">
+<table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th style="min-width:140px;">drawing</th>
-			<th style="min-width:140px;">drawing date</th>
-			<th>prizes &amp; winners</th>
+			<th>Drawing</th>
+			<th>Drawing Date</th>
+			<th>Prizes &amp; Winners</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td data-title="drawing">1</td>
-			<td data-title="drawing date">January 6, 2015</td>
-			<td data-title="prizes &amp; winners">
-				<?php echo Help::displayDrawLink(1); ?>
-				(20) 1st Prizes of $500 in Cash<br>
-				(100) 2nd Prizes of $100 in Cash<br>
-
-				(100) 3rd Prizes of 5 New York Lottery<br>
-				$10 Winner Wonderland Instant Scratch-Off tickets
-			</td>
+			<td data-title="Drawing">XXX</td>
+			<td data-title="Drawing Date">XXX</td>
+			<td data-title="Prizes &amp; Winners"><?php echo Help::displayDrawLink(1); ?></td>
 		</tr>
 	</tbody>
 </table>

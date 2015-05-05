@@ -1,20 +1,13 @@
-var UI_WAIT_MSG = {
-    message: "<h3><i class='icon-spinner icon-spin'></i> Processing... </h3>",
-    css: { border: "3px solid pink", padding: "5px", 'min-width': "300px" }
-}
+var mdiIsNativeShell = function() {
+    if(navigator.userAgent.match(/(Mdi Native Shell)/)) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
-function autotab (current, next) {
+var autotab = function(current, next) {
     if (current.getAttribute && current.value.length == current.getAttribute("maxlength")) {
         next.focus();
     }
-}
-
-$(function() {
-    /* use to prevent scroll to top if using fancybox for popups
-    $('.fancybox').fancybox({
-        helpers: {
-            overlay: {locked: false}
-        }
-    });
-    */
-});
+};

@@ -21,6 +21,7 @@ try {
 
 // list of non cdn js files from ./common/foot.php
 var jsList = [
+    //'bower_components/jquery/dist/jquery.min.js',
     //'bower_components/bootstrap/dist/js/bootstrap.min.js',
     //'bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
     //'bower_components/parsleyjs/dist/parsley.min.js',

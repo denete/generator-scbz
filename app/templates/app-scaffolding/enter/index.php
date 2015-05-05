@@ -5,42 +5,35 @@
 
 	#set page variables
 	$pg_name  = 'Enter Now';
+    $body_class = 'enter';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?php include_once fileFromCommon('head') ?>
+</head>
+<body class="<?php echo $body_class; ?>">
+    <div class="container-fluid">
+        <?php include_once fileFromCommon('header') ?>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="scbz-content-area">
+                    <?php if (Help::isGameOver( $globe->get('game-over-test') )) : ?>
+                        <h2 class="text-center">Thank You For Playing!</h2>
+                        <h4 class="text-center">The entry period for this promotion has concluded.</h4>
+                        <hr />
+                    <?php else: ?>
+                        <?php include_once fileFromCommon('entry'); ?>
+                    <?php endif; ?>
 
-		<div class="container-fluid">
-		    <?php if (Help::isGameOver( $globe->get('game-over-test') )) : ?>
-
-		        <h3 class="text-center">This game is over</h3>
-		        <br>
-				<div class="alert alert-success text-center">
-					<b>Thank you for playing!</b>
-				</div>
-
-		        <img class="img-responsive" style="margin:auto"
-		        	src="<?php echoAppURL() ?>/assets/images/thankyou.jpg"
-		        	alt="This game is over - Thank you for playing!"
-		        >
-		    <?php else: ?>
-
-		    	<p>xxxxx</p>
-
-				<?php include_once fileFromCommon('entry'); ?>
-
-				<div id="popTicket" style="display:none; cursor:default">
-					<h4 class="text-center">TICKET NUMBER</h4>
-					<img class="img-responsive center-block"
-						src="<?php echoAppURL() ?>/assets/images/ticketnumber.png"
-					>
-				</div>
-				<div id="popEntry" style="display:none; cursor:default">
-					<h4 class="text-center">ENTRY NUMBER</h4>
-					<img class="img-responsive center-block"
-						src="<?php echoAppURL() ?>/assets/images/entrynumber.png"
-					>
-				</div>
-		    <?php endif; ?>
-
-			<h3 class="text-center">YOUR ENTRIES</h3>
-			<p class="text-center">Entries are locked in at the time they are submitted and cannot be deleted</p>
-			<?php include_once fileFromCommon('entries') ?>
-		</div>
+                    <h4 class="text-center">TICKETS ENTERED AND ENTRIES AWARDED:</h4>
+                    <p class="text-center">All entries are locked in at the time they are submitted and cannot be deleted.</p>
+                    <?php include_once fileFromCommon('entries') ?>
+                </div>
+            </div>
+        </div>
+        <?php include_once fileFromCommon('footer') ?>
+    </div>
+    <?php include_once fileFromCommon('foot') ?>
+</body>
+</html>

@@ -1,3 +1,3 @@
 <?php
-header('location: /general/users/register.php');
-exit;
+    header('location: /general/users/register.php');
+    exit;

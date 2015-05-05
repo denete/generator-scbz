@@ -60,23 +60,22 @@ var ScbzGenerator = yeoman.generators.Base.extend({
             message: 'Do you wish to use Bootstrap?',
             default: false
         },{
-            type: 'confirm',
-            name: 'useJasnyBootstrap',
-            message: 'Use Jasny Bootstrap?',
-            default: false,
-            when: function(props) {
-                return props.useBootstrap;
-            }
-        },{
-            type: 'confirm',
-            name: 'useParsley',
-            message: 'Do you wish to use Parsley?',
-            default: false
-        },{
-            type: 'confirm',
-            name: 'useFancybox',
-            message: 'Do you wish to use FancyBox?',
-            default: false
+            type: 'checkbox',
+            name: 'extraLibs',
+            message: 'What more would you like?',
+            choices: [{
+                name: 'Jasny Bootstrap',
+                value: 'useJasnyBootstrap',
+                checked: false
+            },{
+                name: 'Parsley',
+                value: 'useParsley',
+                checked: false
+            },{
+                name: 'FancyBox',
+                value: 'useFancybox',
+                checked: false
+            }]
         }];
 
         this.prompt(prompts, function (props) {
@@ -88,9 +87,15 @@ var ScbzGenerator = yeoman.generators.Base.extend({
             this.gameIsPassthru = props.gameIsPassthru;
             this.passthruUrl = props.passthruUrl;
             this.useBootstrap = props.useBootstrap;
-            this.useJasnyBootstrap = props.useJasnyBootstrap;
-            this.useParsley = props.useParsley;
-            this.useFancybox = props.useFancybox;
+
+            var extraLibs = props.extraLibs
+            var checkLib = function (lib) {
+                return extraLibs.indexOf(lib) !== -1;
+            };
+
+            this.useJasnyBootstrap = checkLib('useJasnyBootstrap');
+            this.useParsley = checkLib('useParsley');
+            this.useFancybox = checkLib('useFancybox');
 
             done();
         }.bind(this));
